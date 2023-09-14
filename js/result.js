@@ -1,14 +1,27 @@
 var chart_h = 40;
 var chart_w = 80;
 var stepX = 77 / 14;
+var userInput = localStorage.getItem('userInput');
 
-var chart_1_y = [
-  15, 25, 40, 30, 45, 40, 35, 55, 37, 50, 60, 45,70, 78
-];
-var chart_2_y = [
-  80, 65, 65, 40, 55, 34, 54, 50, 60, 64, 55, 27, 24, 30
-];
+var chart_1_y;
+var chart_2_y;
 
+if (userInput === "www.google.com") {
+    chart_1_y = [
+        50, 50, 40, 30, 45, 40, 35, 55, 60, 65, 70, 75, 80, 100
+    ];
+    chart_2_y = [
+        5, 10, 15, 20, 25, 20, 18, 17, 16, 17, 16, 15, 13, 12
+    ];
+} else {
+    chart_1_y = [
+        5, 10, 15, 20, 25, 20, 18, 17, 16, 17, 16, 15, 13, 12
+    ];
+    chart_2_y = [
+        50, 50, 40, 30, 45, 40, 35, 55, 60, 65, 70, 75, 80, 100
+    ];
+}
+console.log("User:",userInput);
 function point(x, y) {
     x: 0;
     y: 0;
@@ -95,7 +108,7 @@ function drawLineGraph(graph, points, container, id) {
 
         function findPrefix() {
             if (sum > 0) {
-                prefix = "+";
+                prefix = "%";
             } else {
                 prefix = "";
             }
@@ -121,7 +134,7 @@ function drawLineGraph(graph, points, container, id) {
                 percentagePrefix = "";
                 $(graph).find('.percentage-value').addClass('negative');
             } else {
-                percentagePrefix = "+";
+                percentagePrefix = "%";
             }
           if(endValue > initValue){
               percentageGain = endValue/initValue*100;

@@ -17,11 +17,11 @@
       <h2>Enter URL</h2>
       <form>
         <div class="user-box">
-          <input type="text" name="" required="">
+          <input type="text" name="" required="" id="userInput" >
           <label>URL</label>
         </div>
         
-        <a href="/result.html">
+        <a onclick="passInputValue()" href="/result.html">
           <span></span>
           <span></span>
           <span></span>
@@ -31,4 +31,10 @@
       </form>
     </div>
   </body>
+  <script>
+    function passInputValue() {
+        var userInput = document.getElementById('userInput').value;
+        localStorage.setItem('userInput', userInput);
+    }
+</script>
 </html>
